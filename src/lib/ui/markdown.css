@@ -1,0 +1,200 @@
+.iona-content > div > * {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.iona-content h1,
+.iona-content h2,
+.iona-content h3,
+.iona-content h4,
+.iona-content h5,
+.iona-content h6,
+.iona-content p {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.iona-content h1 {
+  margin-bottom: 32px
+}
+
+.iona-content h1,
+.iona-content h2 {
+  margin-top: 32px;
+}
+
+.iona-content h3,
+.iona-content h4 {
+  margin-top: 24px;
+}
+
+.iona-content h1 {
+  font-size: 2.0em;
+  font-weight: 500;
+}
+
+.iona-content h2 {
+  font-size: 1.6em;
+  font-weight: 500;
+}
+
+.iona-content h3 {
+  font-size: 1.2em;
+  font-weight: 800;
+}
+
+.iona-content h4 {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.iona-content h5 {
+  font-weight: 800;
+}
+
+.iona-content h6 {
+  font-size: 0.8em;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.iona-content p {
+  line-height: 1.5;
+}
+
+.iona-content a {
+  color: var(--accent-color);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.iona-content a:hover {
+  text-decoration: underline;
+}
+
+.iona-content strong {
+  font-weight: 800;
+}
+
+.iona-content em {
+  font-style: italic;
+}
+
+.iona-content del {
+  text-decoration: line-through;
+}
+
+.iona-content code {
+  font-family: monospace;
+  user-select: all;
+  color: var(--inline-code-color);
+}
+
+.iona-content p code,
+.iona-content li > code,
+.iona-content dt > code,
+.iona-content dd > code,
+.iona-content th > code,
+.iona-content td > code {
+  padding: 2px 6px;
+  border: 1px solid #f0f0f0;
+  background: #f8f8f8;
+  border-radius: 5px;
+}
+
+.iona-content pre {
+  background: #333;
+  margin: 20px -0px;
+  padding: 20px 24px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+.iona-content pre code {
+  color: #ccc;
+  user-select: inherit;
+}
+
+.iona-content ul,
+.iona-content ol {
+  padding-left: 2em;
+}
+
+.iona-content ul {
+  list-style-type: disc;
+}
+
+.iona-content ol {
+  list-style-type: decimal;
+}
+
+.iona-content dt {
+  font-style: italic;
+  font-weight: 800;
+}
+
+.iona-content dd {
+  padding-left: 1em;
+}
+
+.iona-content li,
+.iona-content dt,
+.iona-content dd {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.iona-content li > *,
+.iona-content dd > * {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.iona-content dt ~ dd,
+.iona-content dd ~ dd {
+  margin-top: -8px;
+}
+
+.iona-content blockquote {
+  position: relative;
+  padding: 4px 28px;
+  padding-left: 32px;
+  font-style: italic;
+}
+
+.iona-content blockquote::before {
+  display: block;
+  position: absolute;
+  width: 4px;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: #eee;
+  content: "";
+}
+
+.iona-content blockquote > *:first-child {
+  margin-top: 0;
+}
+
+.iona-content blockquote > *:last-child {
+  margin-bottom: 0;
+}
+
+.iona-content .table-wrapper {
+  overflow: auto;
+}
+
+.iona-content td,
+.iona-content th {
+  padding: 8px 16px;
+  border: 1px solid #eee;
+}
+
+.iona-content th {
+  font-weight: 800;
+}
+
+.iona-content tr:nth-child(2n + 1) td {
+  background: #fafafa;
+}
