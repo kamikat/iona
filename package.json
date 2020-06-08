@@ -1,0 +1,65 @@
+{
+  "name": "iona-doc",
+  "version": "0.1.0",
+  "description": "Lightweight library for creating interactive docs",
+  "keywords": [
+    "react",
+    "markdown",
+    "jsx",
+    "mdx",
+    "docz"
+  ],
+  "author": "kamikat <kamikat@banana.moe>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kamikat/iona.git"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "main": "./index.js",
+  "module": "./index.js",
+  "babel": {
+    "presets": [
+      "@babel/env",
+      "@babel/react"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "babel-loader": "^8.1.0",
+    "eslint-plugin-react-hooks": "^4.0.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^3.4.1"
+  },
+  "dependencies": {
+    "mdx-loader": "^3.0.2",
+    "nanoid": "^3.1.9",
+    "react-router-dom": "^5.2.0",
+    "reset-css": "^5.0.1",
+    "slugify": "^1.4.0"
+  }
+}
