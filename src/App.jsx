@@ -3,9 +3,11 @@ import { name, version } from '../package.json';
 import Iona, { Category, Group, Topic } from './lib';
 import Page from './lib/Page.macro';
 
+const baseUrl = process.env.PUBLIC_URL + '/'; /* eslint-disable-line no-undef */
+
 const App = () => {
   return (
-    <Iona name={name} version={version}>
+    <Iona name={name} version={version} baseUrl={baseUrl}>
       <Category name="docs">
         <Group name="Manual">
           <Topic name="General">
