@@ -2,3 +2,105 @@
 title: Getting Started
 ---
 
+import Iona from '../lib';
+import Link from '../lib/Link.macro';
+
+# Getting Started
+
+In this guide, we'll learn basics in creating a documentation site with <Link to="./Introduction.mdx">Iona</Link>.
+
+## Step 1: Setup a New Project
+
+Let's get started with creating a new React project or skip to next step if you already have one.
+
+Iona projects are basically React projects. So any React toolchain setup should just work for Iona.
+
+For the best, we use [Create React App](https://create-react-app.dev/):
+
+```bash
+npx create-react-app fancy-docs
+```
+
+Feel free to do any customization on the new project and run `yarn start` to see your app.
+
+## Step 2: Add the Package
+
+For our **fancy-docs** which is a standalone documentation project, Iona can be installed as a dependency:
+
+```bash
+yarn add iona-doc
+```
+
+_(There's another guide on a compact project structure for React component libraries)_
+
+Edit `App.js` to include something like:
+
+```jsx
+import React from 'react';
+import Iona, { Category } from 'iona-doc';
+import Page from 'iona-doc/Page.macro';
+
+const App = () => {
+  return (
+    <Iona name="fancy-docs" version="0.1.0">
+      <Category name="docs">
+        <Page src="./docs/Introduction.mdx" />
+         ...
+      </Category>
+    </Iona>
+  );
+};
+
+export default App;
+```
+
+Note that the `<Page src="..." />` element declares a page that does not yet been created.
+
+And here we'll see an error message:
+
+```
+Module not found: Can't resolve './docs/Introduction.mdx' in ...
+```
+
+## Step 3: Edit Page
+
+It's time to create our first page for **fancy-docs**.
+
+Iona uses an extended markdown syntax. But for now, just add some markdown stuff on the page.
+
+Edit `docs/Introduction.mdx` with something like:
+
+```
+# Introduction
+
+Cheers! My first fancy Iona page written in basic **Markdown** syntax.
+
+| ID | Name               | Rank              |
+|----|--------------------|-------------------|
+| 1  | Tom Preston-Werner | Awesome           |
+| 2  | Albert Einstein    | Nearly as awesome |
+```
+
+Congratulations! You have now completed your first page on Iona.
+
+Save and visit the page at <http://localhost:3000/>
+
+## What's Next
+
+Now you are ready to create a simple document set with basic markdown syntax.
+
+The <Link to="./WritingMDX.mdx">next section</Link> we'll introduce the basics of [MDX](https://mdxjs.com/)
+as well as some useful features and techniques to create interactive pages with React components:
+
+- Use React component in MDX
+- The YAML front matters
+- Cross-reference
+- Editor support
+
+Another guide of <Link to="./CreateTOC.mdx">navigation system</Link> will get your ready to
+manage a moderate document project efficiently.
+
+Feel free to [submit an issue](https://github.com/kamikat/iona/issues) if there's any question or some advice on the library.
+
+All kinds of contributions are appreciated.
+
