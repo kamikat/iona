@@ -119,17 +119,17 @@ const TopicList = ({ entries }) => {
 const PageList = ({ entries }) => {
   const baseUrl = useBaseUrl();
   return entries.filter(
-    ({ type }) => type === 'page' || type === 'link'
+    ({ type }) => type === 'page' || type === 'externalLink'
   ).sort(
     (a, b) => a.index - b.index
-  ).map(({ category={}, group={}, topic={}, id, name, type, url, loading }) => {
-    const path = baseUrl + [category.id, group.id, topic.id, id].filter((a) => a).join('/');
+  ).map((entry) => {
+    const { id, name, type, url, loading } = entry;
     return (
       <div className="iona-nav-entry" key={id}>
         {type === 'page' ? (
-          <div className="iona-nav-page" disabled={loading}><Link to={path}>{name}</Link></div>
+          <div className="iona-nav-page" disabled={loading}><Link to={getPageUrl(baseUrl, entry)}>{name}</Link></div>
         ) : (
-          <div className="iona-nav-link">{name}^{url}</div> // TODO external link
+          <div className="iona-nav-link"><a href={url} target="_blank" rel="noopener noreferrer">{name}</a></div>
         )}
       </div>
     );
@@ -146,7 +146,7 @@ const RefLink = ({ href, to, children, ...props }) => {
     );
   } else if (to) {
     return (
-      <Link to={to.type === 'page' ? baseUrl + [to.category.id, to.group.id, to.topic.id, to.id].filter((a) => a).join('/') : to} {...props}>
+      <Link to={to.type === 'page' ? getPageUrl(baseUrl, to) : to} {...props}>
         {children}
       </Link>
     );
@@ -171,23 +171,28 @@ const MDXComponents = {
 const ContentView = ({ entries }) => {
   const baseUrl = useBaseUrl();
   const pages = entries.filter(({ type }) => type === 'page');
+  const defaultPage = pages.filter(({ default: _default }) => _default)[0];
   return (
     <Switch>
-      {pages.map(({ category={}, group={}, topic={}, id, component: Component }) => {
-        const path = [category.id, group.id, topic.id, id].filter((a) => a).join('/');
+      {pages.map(({ component: Component, ...page }) => {
+        const path = getPageUrl(baseUrl, page);
         return Component && (
-          <Route key={path} exact path={baseUrl + path}>
+          <Route key={path} exact path={path}>
             <MDXProvider components={MDXComponents}>
               <Component />
             </MDXProvider>
           </Route>
         );
       })}
-      {pages[0] && pages[0].component && (
-        <Redirect to={baseUrl + [pages[0].category.id, pages[0].group.id, pages[0].topic.id, pages[0].id].filter((a) => a).join('/')} />
+      {defaultPage && defaultPage.component && (
+        <Redirect to={getPageUrl(baseUrl, defaultPage)} />
       )}
     </Switch>
   );
+};
+
+const getPageUrl = (baseUrl, { category={}, group={}, topic={}, id }) => {
+  return baseUrl + [category.id, group.id, topic.id, id].filter((a) => a).join('/');
 };
 
 export default IonaApp;
