@@ -1,0 +1,4 @@
+[submodule "docs"]
+	path = docs
+	url = ssh://github.com/kamikat/iona
+	branch = gh-pages
