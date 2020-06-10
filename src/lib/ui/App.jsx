@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useRef } from 'react';
 import { Switch, Route, Redirect, Link, useLocation } from 'react-router-dom';
 import { MDXProvider } from '@mdx-js/react';
 import { useEntries } from '../provider';
@@ -9,7 +9,7 @@ const useBaseUrl = () => useContext(BaseUrlContext);
 
 const IonaApp = ({ name, version, baseUrl="/" }) => {
 
-  const location = useLocation();
+  const {pathname, key: locationKey} = useLocation();
 
   const [keyword, setSearchKeyword] = useState('');
 
@@ -21,7 +21,7 @@ const IonaApp = ({ name, version, baseUrl="/" }) => {
 
   const categories = entries.filter(({ type }) => type === 'category');
 
-  const urlCategoryId = categories.map((a) => a.id).find((id) => location.pathname.startsWith(baseUrl + id + '/'));
+  const urlCategoryId = categories.map((a) => a.id).find((id) => pathname.startsWith(baseUrl + id + '/'));
   const defaultCategoryId = categories[0] && categories[0].id;
 
   const [categoryId, setCategoryId] = useState(urlCategoryId);
@@ -40,6 +40,17 @@ const IonaApp = ({ name, version, baseUrl="/" }) => {
   const groups = entries1.filter(({ category={} }) => category.id === categoryId);
   const topics = entries1.filter(({ category={}, group }) => category.id === categoryId && !group);
   const pages = entries1.filter(({ category={}, group, topic }) => category.id === categoryId && !group && !topic);
+
+  const contentView = useRef(null);
+  const scrollTops = useRef({});
+
+  useEffect(() => {
+    if (scrollTops.current[locationKey] === undefined) {
+      contentView.current.scrollTop = 0;
+    } else {
+      contentView.current.scrollTop = scrollTops.current[locationKey];
+    }
+  }, [locationKey]);
 
   return (
     <BaseUrlContext.Provider value={baseUrl}>
@@ -76,7 +87,10 @@ const IonaApp = ({ name, version, baseUrl="/" }) => {
             <GroupList entries={groups} />
           </div>
         </div>
-        <div className="iona-content">
+        <div
+          ref={contentView}
+          className="iona-content"
+          onScroll={(e) => { scrollTops.current[locationKey] = e.target.scrollTop; }}>
           <div className="iona-content-wrapper">
             <ContentView entries={entries} />
           </div>
