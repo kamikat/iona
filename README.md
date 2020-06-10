@@ -21,7 +21,7 @@ As development dependency (for general-purpose project):
 yarn add --dev iona-doc
 ```
 
-See [Getting Started](https://banana.moe/iona/docs/Manual/General/Getting-Started) for more information.
+See [Getting Started](https://banana.moe/iona/Manual/General/Getting-Started) for more information.
 
 ## Documentation
 

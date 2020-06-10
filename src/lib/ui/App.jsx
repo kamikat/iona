@@ -198,9 +198,11 @@ const ContentView = ({ entries }) => {
           </Route>
         );
       })}
-      {defaultPage && defaultPage.component && (
-        <Redirect to={getPageUrl(baseUrl, defaultPage)} />
-      )}
+      <Route exact path={baseUrl}>
+        {defaultPage && defaultPage.component && (
+          <Redirect to={getPageUrl(baseUrl, defaultPage)} />
+        )}
+      </Route>
     </Switch>
   );
 };

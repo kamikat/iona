@@ -37,16 +37,13 @@ Edit `App.js` to include something like:
 
 ```jsx
 import React from 'react';
-import Iona, { Category } from 'iona-doc';
+import Iona from 'iona-doc';
 import Page from 'iona-doc/Page.macro';
 
 const App = () => {
   return (
     <Iona name="fancy-docs" version="0.1.0">
-      <Category name="docs">
-        <Page src="./docs/Introduction.mdx" />
-         ...
-      </Category>
+      <Page src="./docs/Introduction.mdx" />
     </Iona>
   );
 };
