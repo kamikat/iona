@@ -1,6 +1,8 @@
 /* eslint-env node */
 
 const path = require('path');
+const crypto = require('crypto');
+
 const {createMacro} = require('babel-plugin-macros');
 const {createImportMDX} = require('./astHelper');
 
@@ -44,6 +46,7 @@ function convertToLoader({ referencePath, state, babel }) {
                     `If the value is dynamic, please make sure that its value is statically deterministic.`);
   }
 
+  const absPath = path.resolve(path.dirname(state.filename), importPath);
   referencePath.parentPath.replaceWith(
     t.jSXOpeningElement(
       t.jSXMemberExpression(t.jSXIdentifier('Iona'), t.jSXIdentifier('PageLoader')), [
@@ -55,7 +58,7 @@ function convertToLoader({ referencePath, state, babel }) {
         ),
         t.jSXAttribute(
           t.jSXIdentifier('sourceId'),
-          t.stringLiteral(path.resolve(path.dirname(state.filename), importPath)),
+          t.stringLiteral(crypto.createHash('md5').update(absPath).digest('hex')),
         ),
         t.jSXAttribute(
           t.jSXIdentifier('sourcePath'),
