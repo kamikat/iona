@@ -1,6 +1,7 @@
 /src
 /public
 /build
+/docs
 /yarn.lock
 .eslintrc.json
 .env
