@@ -1,6 +1,6 @@
 {
   "name": "iona-doc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Lightweight library for creating interactive docs",
   "keywords": [
     "react",
