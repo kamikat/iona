@@ -18,7 +18,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir lib --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
-    "build:docs": "PUBLIC_URL=/iona react-scripts build && rm -rf docs/* && mv build/* docs/ && rm -r build/",
+    "build:docs": "PUBLIC_URL=/iona react-scripts build && rm -rf docs/* && mv build/* docs/ && rm -r build/ && cp docs/index.html docs/404.html",
     "prepublishOnly": "npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
